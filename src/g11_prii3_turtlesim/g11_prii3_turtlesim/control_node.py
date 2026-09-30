@@ -9,11 +9,11 @@ class TurtleControl(Node):
         super().__init__('turtle_control_g11')
         self.publisher_ = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
         
-        # Servicios PBI 1.3
+        # Servicios PBI 
         self.srv_pause = self.create_service(SetBool, 'pause_resume', self.pause_callback)
         self.srv_restart = self.create_service(Empty, 'restart', self.restart_callback)
         
-        # Clientes de turtlesim (Lapiz y Teletransporte)
+        # Clientes de turtlesim 
         self.pen_client = self.create_client(SetPen, '/turtle1/set_pen')
         self.teleport_client = self.create_client(TeleportAbsolute, '/turtle1/teleport_absolute')
         
@@ -22,25 +22,25 @@ class TurtleControl(Node):
         self.step = 0
         
         self.sequence = [
-            (-2.0, 0.0, 1),    # 0: Mover izquierda para centrar
-            (1.0, 0.0, 0),     # 1: Base primer 1
-            (-0.5, 0.0, 0),    # 2: Centro base
-            (0.0, 1.57, 0),    # 3: Girar arriba
-            (2.5, 0.0, 0),     # 4: Tallo vertical
-            (0.0, 2.356, 0),   # 5: Girar diagonal
-            (0.8, 0.0, 0),     # 6: Pico
-            (-0.8, 0.0, 1),    # 7: Atrás
-            (0.0, 0.785, 1),   # 8: Girar abajo
-            (2.5, 0.0, 1),     # 9: Bajar
-            (0.0, 1.57, 1),    # 10: Girar derecha
-            (2.0, 0.0, 1),     # 11: Espacio
-            (1.0, 0.0, 0),     # 12: Base segundo 1
-            (-0.5, 0.0, 0),    # 13: Centro base
-            (0.0, 1.57, 0),    # 14: Girar arriba
-            (2.5, 0.0, 0),     # 15: Tallo vertical
-            (0.0, 2.356, 0),   # 16: Girar diagonal
-            (0.8, 0.0, 0),     # 17: Pico
-            (0.0, 0.0, 1)      # 18: Fin (levantar lápiz para no rayar al teletransportar)
+            (-2.0, 0.0, 1),    
+            (1.0, 0.0, 0),     
+            (-0.5, 0.0, 0),    
+            (0.0, 1.57, 0),    
+            (2.5, 0.0, 0),     
+            (0.0, 2.356, 0),   
+            (0.8, 0.0, 0),     
+            (-0.8, 0.0, 1),    
+            (0.0, 0.785, 1),  
+            (2.5, 0.0, 1),    
+            (0.0, 1.57, 1),    
+            (2.0, 0.0, 1),     
+            (1.0, 0.0, 0),     
+            (-0.5, 0.0, 0),    
+            (0.0, 1.57, 0),    
+            (2.5, 0.0, 0),     
+            (0.0, 2.356, 0),   
+            (0.8, 0.0, 0),     
+            (0.0, 0.0, 1)      
         ]
 
     def call_set_pen(self, off):
@@ -55,7 +55,7 @@ class TurtleControl(Node):
             req = TeleportAbsolute.Request()
             req.x = 5.544445
             req.y = 5.544445
-            req.theta = 0.0  # Mirando hacia la derecha
+            req.theta = 0.0  
             self.teleport_client.call_async(req)
 
     def pause_callback(self, request, response):
@@ -67,7 +67,7 @@ class TurtleControl(Node):
         self.step = 0
         self.is_paused = False
         self.call_set_pen(0)
-        self.center_turtle() # Devuelve al centro si se reinicia
+        self.center_turtle() 
         return response
 
     def timer_callback(self):
@@ -75,12 +75,11 @@ class TurtleControl(Node):
             return
             
         if self.step == len(self.sequence):
-            # Terminó la secuencia, va al centro
             self.center_turtle()
             self.step += 1
             return
         elif self.step > len(self.sequence):
-            return # Se queda quieta tras ir al centro
+            return 
         
         current = self.sequence[self.step]
         self.call_set_pen(current[2])
