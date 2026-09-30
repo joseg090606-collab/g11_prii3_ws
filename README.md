@@ -4,7 +4,7 @@
 
 1. Abre tu terminal (Ctrl+ALT+T).
 2. Copia este comando, pégalo en la terminal y presiona la tecla Enter para descargar nuestra carpeta:
-   `git clone [PEGAR_AQUÍ_EL_ENLACE_DE_TU_GITHUB]`
+   `git clone https://github.com/joseg090606-collab/g11_prii3_ws.git`
 
 ##Paso 1: Compilar
 1. Entra a la carpeta que acabamos de descargar copiando esto y presionando Enter:
