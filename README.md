@@ -1,6 +1,6 @@
 # 🐢 Proyecto RII 3: Sprint 1 - Grupo 11 🐢
 
-¡Hola! Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y ver a la tortuguita dibujar el número 11 solita.
+Hola, Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y ver a la tortuguita dibujar el número 11 solita.
 
 1. Abre tu terminal (Ctrl+ALT+T).
 2. Copia este comando, pégalo en la terminal y presiona la tecla Enter para descargar nuestra carpeta:
@@ -19,3 +19,5 @@
    `ros2 launch g11_prii3_turtlesim draw_11.launch.py`
 
 ##Se abrirá una ventana azul y verás a la tortuga dibujar un 11
+##Para ver el codigo de control el siguiente comando dentro de la carpeta descargada
+   `nano ~/g11_prii3_ws/src/g11_prii3_turtlesim/g11_prii3_turtlesim/control_node.py`
