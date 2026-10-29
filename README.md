@@ -25,3 +25,20 @@ Hola, Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 
 
 # 🐢 Proyecto RII 3: Sprint 2- Grupo 11 🐢
+
+Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y ver al TurtleBot3 dibujar el número 11 en Gazebo y RViz2, además de probar el servicio de control y la detención por Lidar.   
+
+1. Abre tu terminal (Ctrl+ALT+T).
+2. Copia este comando, pégalo en la terminal y presiona Enter para descargar nuestra carpeta:
+   `git clone https://github.com/joseg090606-collab/g11_prii3_ws.git`
+
+##Paso 1: Compilar
+1. Entra a la carpeta que acabamos de descargar copiando esto y presionando Enter:
+   `cd g11_prii3_ws`
+2. Ahora vamos a armar el proyecto. Copia esto, pégalo y presiona Enter:
+   `colcon build --packages-select g11_prii3_move_turtlebot`
+
+#Paso 2: Ejecutar la Simulación
+1. Carga el entorno y define el modelo del robot:
+   source install/setup.bashexport TURTLEBOT3_MODEL=burger
+2. 
