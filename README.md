@@ -39,35 +39,25 @@ Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
    `colcon build --packages-select g11_prii3_move_turtlebot`
 
 #Paso 2: Ejecutar la Simulación
-1. Carga el entorno y define el modelo del robot:
-   source install/setup.bashexport TURTLEBOT3_MODEL=burger
-2. 
+1. Lanza Gazebo con el TurtleBot3. Copia lo siguiente y presiona ENTER, comando a comando:
+   `source install/setup.bash`
+   `export TURTLEBOT3_MODEL=burger`
+   `ros2 launch turtlebot3_gazebo empty_world.launch.py use_sim_time:=true`
+2. Abre una terminal 2, entra en la misma carpeta siguiendo el primer paso de la compilacion y spawnea un cubo obstaculo copiando este comando y presiona ENTER:
+   `ros2 run gazebo_ros spawn_entity.py \
+   -file src/g11_prii3_move_turtlebot/obstaculo/cubo.sdf \
+   -entity cubo_obstaculo \
+   -x 0.5 -y 0.0 -z 0.1`
+   Asi veras como en Gazebo habra aparecido un cubo el cual podras mover
+3. Abre una terminal 3, entra en la misma carpeta siguiendo el primer paso de la compilacion y ejecuta el nodo trazador del numero 11. Copia y pega esto y presiona ENTER, comando a comando:
+   `source install/setup.bash`
+   `ros2 run g11_prii3_move_turtlebot draw_number --ros-args -p use_sim_time:=true`
 
-crear un cubo con nano ~/cubo.sdf
-pegar el siguiente: 
-<sdf version="1.6">
-  <model name="cubo">
-    <static>false</static>
-    <link name="link">
-      <pose>0 0 0 0 0 0</pose>
-      <collision name="collision">
-        <geometry>
-          <box>
-            <size>0.5 0.5 0.5</size>
-          </box>
-        </geometry>
-      </collision>
-      <visual name="visual">
-        <geometry>
-          <box>
-            <size>0.5 0.5 0.5</size>
-          </box>
-        </geometry>
-      </visual>
-    </link>
-  </model>
-</sdf>
+#Paso 3: Probar Callbacks
+1. Abre una terminal 4, entra en la misma carpeta siguiendo el primer paso de la compilacion y prueba los servicios de pausa y reanudacion:
 
-///////////////
-crear el obstaculo: 
-ros2 service call /spawn_entity gazebo_msgs/srv/SpawnEntity "{name: 'cubo', xml: '$(cat ~/cubo.sdf)', robot_namespace: '', initial_pose: {position: {x: 1.2, y: 0.0, z: 0.25}}, reference_frame: 'world'}"
+   -Pausar la marcha:
+      `ros2 service call /control_draw std_srvs/srv/SetBool "{data: false}"`
+
+   -Reanudar la marcha:
+      `ros2 service call /control_draw std_srvs/srv/SetBool "{data: true}"`
