@@ -21,3 +21,6 @@ Hola, Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 ##Se abrirá una ventana azul y verás a la tortuga dibujar un 11
 ##Para ver el codigo de control el siguiente comando dentro de la carpeta descargada
    `nano ~/g11_prii3_ws/src/g11_prii3_turtlesim/g11_prii3_turtlesim/control_node.py`
+
+
+# 🐢 Proyecto RII 3: Sprint 2- Grupo 11 🐢
