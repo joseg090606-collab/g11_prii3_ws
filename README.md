@@ -42,3 +42,32 @@ Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 1. Carga el entorno y define el modelo del robot:
    source install/setup.bashexport TURTLEBOT3_MODEL=burger
 2. 
+
+crear un cubo con nano ~/cubo.sdf
+pegar el siguiente: 
+<sdf version="1.6">
+  <model name="cubo">
+    <static>false</static>
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.5</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.5 0.5 0.5</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
+///////////////
+crear el obstaculo: 
+ros2 service call /spawn_entity gazebo_msgs/srv/SpawnEntity "{name: 'cubo', xml: '$(cat ~/cubo.sdf)', robot_namespace: '', initial_pose: {position: {x: 1.2, y: 0.0, z: 0.25}}, reference_frame: 'world'}"
