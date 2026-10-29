@@ -44,10 +44,7 @@ Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
    `export TURTLEBOT3_MODEL=burger`
    `ros2 launch turtlebot3_gazebo empty_world.launch.py use_sim_time:=true`
 2. Abre una terminal 2, entra en la misma carpeta siguiendo el primer paso de la compilacion y spawnea un cubo obstaculo copiando este comando y presiona ENTER:
-   `ros2 run gazebo_ros spawn_entity.py \
-   -file src/g11_prii3_move_turtlebot/obstaculo/cubo.sdf \
-   -entity cubo_obstaculo \
-   -x 0.5 -y 0.0 -z 0.1`
+   `ros2 run gazebo_ros spawn_entity.py   -file src/g11_prii3_move_turtlebot/obstaculo/cubo.sdf   -entity cubo_obstaculo   -x 0.5 -y 0.0 -z 0.1`
    Asi veras como en Gazebo habra aparecido un cubo el cual podras mover
 3. Abre una terminal 3, entra en la misma carpeta siguiendo el primer paso de la compilacion y ejecuta el nodo trazador del numero 11. Copia y pega esto y presiona ENTER, comando a comando:
    `source install/setup.bash`
