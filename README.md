@@ -24,7 +24,7 @@ Hola, Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 
 
 
-# 🐢 Proyecto RII 3: Sprint 2- Grupo 11 🐢
+# 🐢 Proyecto RII 3: Sprint 2 - Grupo 11 🐢
 
 Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y ver al TurtleBot3 dibujar el número 11 en Gazebo y RViz2, además de probar el servicio de control y la detención por Lidar.   
 
@@ -61,7 +61,7 @@ Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 
 
 
-# 🐢 Proyecto RII 3: Sprint 2- Grupo 11 🐢
+# 🐢 Proyecto RII 3: Sprint 3 - Grupo 11 🐢
 
 Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar el entorno simulado del laboratorio F1L3 en Gazebo y cargar nuestro mapa para navegar con Nav2 y RViz2 (ESTA LINEA CAMBIARLA LUEGO)
 
