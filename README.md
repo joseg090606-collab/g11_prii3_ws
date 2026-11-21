@@ -81,4 +81,12 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
    `source install/setup.bash`
    `export TURTLEBOT3_MODEL=waffle`
    `ros2 launch f1l3_gazebo f1l3_world.launch.py`
-2.
+2. Terminal 2 (Nav2 y Mapa): Abre una segunda terminal, entra en la carpeta g11_prii3_ws y carga nuestro mapa guardado ejecutando comando a comando:
+   `source install/setup.bash`
+   `export TURTLEBOT3_MODEL=waffle`
+   `ros2 launch nav2_bringup bringup_launch.py map:=$(pwd)/src/g11_prii3_nav_turtlebot/maps/map.yaml use_sim_time:=true`
+3. Terminal 3 (RViz2): Abre una tercera terminal, entra en g11_prii3_ws y abre RViz2 con la vista por defecto de Nav2 ejecutando comando a comando:
+   `source install/setup.bash`
+   `export TURTLEBOT3_MODEL=waffle`
+   `ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz`
+(HASTA AQUI DE MOMENTO EL README, LUEGO CUANDO ESTE COMPLETO SERA ACTUALIZADO, NO OLVIDAR - 'SG')
