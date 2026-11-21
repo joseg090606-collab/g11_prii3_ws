@@ -58,3 +58,14 @@ Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 
    -Reanudar la marcha:
       `ros2 service call /control_draw std_srvs/srv/SetBool "{data: true}"`
+
+
+
+# 🐢 Proyecto RII 3: Sprint 2- Grupo 11 🐢
+
+Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar el entorno simulado del laboratorio F1L3 en Gazebo y cargar nuestro mapa para navegar con Nav2 y RViz2 (ESTA LINEA CAMBIARLA LUEGO)
+
+1. Abre tu terminal (`Ctrl+ALT+T`).
+2. Copia este comando, pégalo en la terminal y presiona Enter para descargar nuestro repositorio:
+   ```bash
+   git clone [https://github.com/joseg090606-collab/g11_prii3_ws.git](https://github.com/joseg090606-collab/g11_prii3_ws.git)
