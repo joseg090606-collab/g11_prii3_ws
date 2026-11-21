@@ -40,14 +40,14 @@ Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 
 #Paso 2: Ejecutar la Simulación
 1. Lanza Gazebo con el TurtleBot3. Copia lo siguiente y presiona ENTER, comando a comando:
-   `source install/setup.bash`
-   `export TURTLEBOT3_MODEL=burger`
+   `source install/setup.bash` // 
+   `export TURTLEBOT3_MODEL=burger` // 
    `ros2 launch turtlebot3_gazebo empty_world.launch.py use_sim_time:=true`
 2. Abre una terminal 2, entra en la misma carpeta siguiendo el primer paso de la compilacion y spawnea un cubo obstaculo copiando este comando y presiona ENTER:
    `ros2 run gazebo_ros spawn_entity.py   -file src/g11_prii3_move_turtlebot/obstaculo/cubo.sdf   -entity cubo_obstaculo   -x 0.5 -y 0.0 -z 0.1`
    Asi veras como en Gazebo habra aparecido un cubo el cual podras mover
 3. Abre una terminal 3, entra en la misma carpeta siguiendo el primer paso de la compilacion y ejecuta el nodo trazador del numero 11. Copia y pega esto y presiona ENTER, comando a comando:
-   `source install/setup.bash`
+   `source install/setup.bash` // 
    `ros2 run g11_prii3_move_turtlebot draw_number --ros-args -p use_sim_time:=true`
 
 #Paso 3: Probar Callbacks
@@ -82,11 +82,11 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
    `export TURTLEBOT3_MODEL=waffle` // 
    `ros2 launch f1l3_gazebo f1l3_world.launch.py`
 2. Terminal 2 (Nav2 y Mapa): Abre una segunda terminal, entra en la carpeta g11_prii3_ws y carga nuestro mapa guardado ejecutando comando a comando:
-   `source install/setup.bash`
-   `export TURTLEBOT3_MODEL=waffle`
+   `source install/setup.bash` //
+   `export TURTLEBOT3_MODEL=waffle` // 
    `ros2 launch nav2_bringup bringup_launch.py map:=$(pwd)/src/g11_prii3_nav_turtlebot/maps/map.yaml use_sim_time:=true`
 3. Terminal 3 (RViz2): Abre una tercera terminal, entra en g11_prii3_ws y abre RViz2 con la vista por defecto de Nav2 ejecutando comando a comando:
-   `source install/setup.bash`
-   `export TURTLEBOT3_MODEL=waffle`
+   `source install/setup.bash` //
+   `export TURTLEBOT3_MODEL=waffle` // 
    `ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz`
 (HASTA AQUI DE MOMENTO EL README, LUEGO CUANDO ESTE COMPLETO SERA ACTUALIZADO, NO OLVIDAR - 'SG')
