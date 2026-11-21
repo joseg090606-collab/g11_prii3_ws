@@ -69,11 +69,15 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
 2. Copia este comando, pégalo en la terminal y presiona Enter para descargar nuestro repositorio:
    `git clone https://github.com/joseg090606-collab/g11_prii3_ws.git`
 
-#Paso 1: Compilar
+#Paso 1: Compilar y Configurar el Entorno
 1. Entra a la carpeta que acabamos de descargar copiando esto y presionando Enter:
    `cd g11_prii3_ws`
 2. Ahora vamos a compilar los paquetes del proyecto. Copia esto, pégalo y presiona Enter:
    `colcon build`
+3. Guarda el entorno y el modelo de TurtleBot3 en tu sistema para no tener que repetirlos en cada terminal nueva (solo se hace una vez):
+   `echo "source ~/g11_prii3_ws/install/setup.bash" >> ~/.bashrc` // 
+   `echo "export TURTLEBOT3_MODEL=waffle" >> ~/.bashrc` // 
+   `source ~/.bashrc`
 
 #Paso 2: Ejecutar la Simulación y Cargar el Mapa
 1. Terminal 1 (Gazebo): Lanza el mundo simulado del laboratorio F1L3 con el TurtleBot3. Copia lo siguiente y presiona ENTER, comando a comando:
