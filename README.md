@@ -78,8 +78,8 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
 
 #Paso 2: Ejecutar la Simulación y Cargar el Mapa
 1. Terminal 1 (Gazebo): Lanza el mundo simulado del laboratorio F1L3 con el TurtleBot3. Copia lo siguiente y presiona ENTER, comando a comando:
-   `source install/setup.bash`
-   `export TURTLEBOT3_MODEL=waffle`
+   `source install/setup.bash`/
+   `export TURTLEBOT3_MODEL=waffle`/
    `ros2 launch f1l3_gazebo f1l3_world.launch.py`
 2. Terminal 2 (Nav2 y Mapa): Abre una segunda terminal, entra en la carpeta g11_prii3_ws y carga nuestro mapa guardado ejecutando comando a comando:
    `source install/setup.bash`
