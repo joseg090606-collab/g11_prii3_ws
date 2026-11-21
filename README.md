@@ -2,7 +2,7 @@
 
 Hola, Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y ver a la tortuguita dibujar el número 11 solita.
 
-1. Abre tu terminal (Ctrl+ALT+T).
+1. Abre tu terminal (`Ctrl+ALT+T`).
 2. Copia este comando, pégalo en la terminal y presiona la tecla Enter para descargar nuestra carpeta:
    `git clone https://github.com/joseg090606-collab/g11_prii3_ws.git`
 
@@ -28,7 +28,7 @@ Hola, Aquí tienes los pasos súper sencillos para descargar nuestro proyecto y 
 
 Hola, aquí tienes los pasos súper sencillos para descargar nuestro proyecto y ver al TurtleBot3 dibujar el número 11 en Gazebo y RViz2, además de probar el servicio de control y la detención por Lidar.   
 
-1. Abre tu terminal (Ctrl+ALT+T).
+1. Abre tu terminal (`Ctrl+ALT+T`).
 2. Copia este comando, pégalo en la terminal y presiona Enter para descargar nuestra carpeta:
    `git clone https://github.com/joseg090606-collab/g11_prii3_ws.git`
 
@@ -69,3 +69,16 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
 2. Copia este comando, pégalo en la terminal y presiona Enter para descargar nuestro repositorio:
    ```bash
    git clone [https://github.com/joseg090606-collab/g11_prii3_ws.git](https://github.com/joseg090606-collab/g11_prii3_ws.git)
+
+#Paso 1: Compilar
+1. Entra a la carpeta que acabamos de descargar copiando esto y presionando Enter:
+   `cd g11_prii3_ws`
+2. Ahora vamos a compilar los paquetes del proyecto. Copia esto, pégalo y presiona Enter:
+   `colcon build`
+
+#Paso 2: Ejecutar la Simulación y Cargar el Mapa
+1. Terminal 1 (Gazebo): Lanza el mundo simulado del laboratorio F1L3 con el TurtleBot3. Copia lo siguiente y presiona ENTER, comando a comando:
+   `source install/setup.bash`
+   `export TURTLEBOT3_MODEL=waffle`
+   `ros2 launch f1l3_gazebo f1l3_world.launch.py`
+2.
