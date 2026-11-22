@@ -100,14 +100,13 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
 ##PASO OPCIONAL
 1. Si en tu instalación de Gazebo no se carga la textura del marcador ArUco (viéndose como un cuadrado gris liso en la cámara), puedes simular la detección del ArUco 5 desde una terminal en cuanto el robot llegue y se detenga frente a la puerta:
    1. Terminal 5 (opcional):
-   `ros2 topic pub --once /aruco_topic std_msgs/msg/String "{data: '5'}"`
-   Al ejecutar este comando, la Terminal 4 confirmará la lectura mostrando las coordenadas de la puerta y el robot continuará hacia el interior del laboratorio.
+      `ros2 topic pub --once /aruco_topic std_msgs/msg/String "{data: '5'}"`
 
 ##EJECUCION DE NODOS POR SEPARADO (PRUEBAS INDIVIDUALES):
 1.   Si deseas probar cada nodo individualmente en lugar de usar el archivo .launch.py:
-   1. Navegación predefinida directa al laboratorio (sin ArUco):
+   i. Navegación predefinida directa al laboratorio (sin ArUco):
       `ros2 run g11_prii3_nav_turtlebot predefined_navigation`
-   2. Solo nodo detector de ArUco:
+   ii. Solo nodo detector de ArUco:
       `ros2 run g11_prii3_nav_turtlebot aruco_detector`
-   3. Solo nodo de navegación autónoma:
+   iii. Solo nodo de navegación autónoma:
       `ros2 run g11_prii3_nav_turtlebot autonomous_navigation`
