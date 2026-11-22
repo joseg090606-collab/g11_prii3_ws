@@ -104,9 +104,9 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
 
 ##EJECUCION DE NODOS POR SEPARADO (PRUEBAS INDIVIDUALES):
 1.   Si deseas probar cada nodo individualmente en lugar de usar el archivo .launch.py:
-   i. Navegación predefinida directa al laboratorio (sin ArUco):
+   1. Navegación predefinida directa al laboratorio (sin ArUco):
       `ros2 run g11_prii3_nav_turtlebot predefined_navigation`
-   ii. Solo nodo detector de ArUco:
+   2. Solo nodo detector de ArUco:
       `ros2 run g11_prii3_nav_turtlebot aruco_detector`
-   iii. Solo nodo de navegación autónoma:
+   3. Solo nodo de navegación autónoma:
       `ros2 run g11_prii3_nav_turtlebot autonomous_navigation`
