@@ -12,14 +12,14 @@ class AutonomousNavigation(Node):
         self.create_subscription(PoseWithCovarianceStamped, '/amcl_pose', self.amcl_callback, 10)
         self.create_subscription(String, '/aruco_topic', self.aruco_callback, 10)
         
-        self.puerta = {'x': 3.522, 'y': 1.098, 'z': 0.701, 'w': 0.713}
+        self.puerta = {'x': 3.616, 'y': 0.637, 'z': 0.826, 'w': 0.564}
         
         self.destinos = {
-            '5': {'x': 3.522, 'y': 3.500, 'z': 0.701, 'w': 0.713},
+            '5': {'x': 3.165, 'y': 13.638, 'z': 0.983, 'w': 0.183},
         }
         
         self.estado = 'YENDO_A_PUERTA'
-        self.timer = self.create_timer(2.0, self.iniciar_ruta)
+        self.timer_inicio = self.create_timer(2.0, self.iniciar_ruta)
 
     def publicar_meta(self, coords):
         msg = PoseStamped()
@@ -33,16 +33,16 @@ class AutonomousNavigation(Node):
 
     def iniciar_ruta(self):
         self.publicar_meta(self.puerta)
-        self.get_logger().info('Fase 1: Yendo hacia la puerta del laboratorio...')
-        self.timer.cancel()
+        self.get_logger().info('Fase 1: Yendo frente a la entrada del laboratorio...')
+        self.timer_inicio.cancel()
 
     def amcl_callback(self, msg):
         if self.estado == 'YENDO_A_PUERTA':
             dx = msg.pose.pose.position.x - self.puerta['x']
             dy = msg.pose.pose.position.y - self.puerta['y']
-            if math.hypot(dx, dy) < 0.35:
+            if math.hypot(dx, dy) < 0.15:
                 self.estado = 'ESPERANDO_ARUCO'
-                self.get_logger().info('Llegada a la puerta. Esperando lectura del ArUco 5...')
+                self.get_logger().info('Llegada frente a la entrada. Esperando lectura del ArUco 5...')
 
     def aruco_callback(self, msg):
         if self.estado == 'ESPERANDO_ARUCO':
@@ -50,7 +50,8 @@ class AutonomousNavigation(Node):
             if aruco_id in self.destinos:
                 self.publicar_meta(self.destinos[aruco_id])
                 self.estado = 'YENDO_A_DESTINO'
-                self.get_logger().info(f'ArUco ID {aruco_id} detectado -> Yendo al destino final dentro del laboratorio.')
+                self.get_logger().info(f"ArUco ID {aruco_id} detectado en coordenadas (x: {self.puerta['x']}, y: {self.puerta['y']}) -> Entrando al destino final."
+)
 
 def main(args=None):
     rclpy.init(args=args)
