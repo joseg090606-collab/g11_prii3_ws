@@ -92,6 +92,7 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
    1. En la barra superior de RViz2, haz clic en 2D Pose Estimate.
    2. Pincha sobre el mapa en la posición inicial del pasillo donde aparece el robot en Gazebo y arrastra la flecha verde apuntando hacia su frente.
    3. Comprueba que el escáner láser (puntos de color) coincide con las paredes del mapa.
+   4. Para ver lo que captura el robot en tiempo real, pulsa **Add** (abajo a la izquierda en el panel *Displays*), ve a la pestaña **By topic**, selecciona **Image** dentro de `/camera/image_raw` (o `/image_raw`) y pulsa **OK**.
 
 ##Paso 4: Ejecutar la Navegación Autónoma (con Launch)
 1. Terminal 4: Arranca simultáneamente el detector de ArUco y la máquina de estados de navegación autónoma:
