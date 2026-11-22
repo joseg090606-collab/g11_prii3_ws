@@ -25,6 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             'predefined_navigation = g11_prii3_nav_turtlebot.navegacion_predefinida_turtlebot:main',
+            'aruco_detector = g11_prii3_nav_turtlebot.aruco_detector:main',
+            'autonomous_navigation = g11_prii3_nav_turtlebot.navegacion_autonoma:main',
         ],
     },
 )
