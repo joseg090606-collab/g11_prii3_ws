@@ -88,26 +88,26 @@ Hola, aquí tienes los pasos sencillos para descargar nuestro proyecto, lanzar e
    `ros2 run rviz2 rviz2 -d $(ros2 pkg prefix nav2_bringup)/share/nav2_bringup/rviz/nav2_default_view.rviz`
 
 ##Paso 3: Localizar el Robot en RViz2
-Antes de enviar cualquier objetivo de navegación, indica a Nav2 dónde se encuentra el robot en el mapa:
-1. En la barra superior de RViz2, haz clic en 2D Pose Estimate.
-2. Pincha sobre el mapa en la posición inicial del pasillo donde aparece el robot en Gazebo y arrastra la flecha verde apuntando hacia su frente.
-3. Comprueba que el escáner láser (puntos de color) coincide con las paredes del mapa.
+1.Antes de enviar cualquier objetivo de navegación, indica a Nav2 dónde se encuentra el robot en el mapa:
+   1. En la barra superior de RViz2, haz clic en 2D Pose Estimate.
+   2. Pincha sobre el mapa en la posición inicial del pasillo donde aparece el robot en Gazebo y arrastra la flecha verde apuntando hacia su frente.
+   3. Comprueba que el escáner láser (puntos de color) coincide con las paredes del mapa.
 
 ##Paso 4: Ejecutar la Navegación Autónoma (con Launch)
 1. Terminal 4: Arranca simultáneamente el detector de ArUco y la máquina de estados de navegación autónoma:
    `ros2 launch g11_prii3_nav_turtlebot navegacion_turtlebot.launch.py`
 
 ##PASO OPCIONAL
-Si en tu instalación de Gazebo no se carga la textura del marcador ArUco (viéndose como un cuadrado gris liso en la cámara), puedes simular la detección del ArUco 5 desde una terminal en cuanto el robot llegue y se detenga frente a la puerta:
-1. Terminal 5 (opcional):
+1. Si en tu instalación de Gazebo no se carga la textura del marcador ArUco (viéndose como un cuadrado gris liso en la cámara), puedes simular la detección del ArUco 5 desde una terminal en cuanto el robot llegue y se detenga frente a la puerta:
+   1. Terminal 5 (opcional):
    `ros2 topic pub --once /aruco_topic std_msgs/msg/String "{data: '5'}"`
-Al ejecutar este comando, la Terminal 4 confirmará la lectura mostrando las coordenadas de la puerta y el robot continuará hacia el interior del laboratorio.
+   Al ejecutar este comando, la Terminal 4 confirmará la lectura mostrando las coordenadas de la puerta y el robot continuará hacia el interior del laboratorio.
 
 ##EJECUCION DE NODOS POR SEPARADO (PRUEBAS INDIVIDUALES):
-Si deseas probar cada nodo individualmente en lugar de usar el archivo .launch.py:
-*Navegación predefinida directa al laboratorio (sin ArUco):
-   `ros2 run g11_prii3_nav_turtlebot predefined_navigation`
-*Solo nodo detector de ArUco:
-   `ros2 run g11_prii3_nav_turtlebot aruco_detector`
-*Solo nodo de navegación autónoma:
-   `ros2 run g11_prii3_nav_turtlebot autonomous_navigation`
+1.   Si deseas probar cada nodo individualmente en lugar de usar el archivo .launch.py:
+   1. Navegación predefinida directa al laboratorio (sin ArUco):
+      `ros2 run g11_prii3_nav_turtlebot predefined_navigation`
+   2. Solo nodo detector de ArUco:
+      `ros2 run g11_prii3_nav_turtlebot aruco_detector`
+   3. Solo nodo de navegación autónoma:
+      `ros2 run g11_prii3_nav_turtlebot autonomous_navigation`
