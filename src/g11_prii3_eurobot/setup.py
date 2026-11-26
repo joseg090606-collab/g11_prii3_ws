@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'navegacion_odom = g11_prii3_eurobot.navegacion_odom:main',
             'overhead_aruco_detector = g11_prii3_eurobot.overhead_aruco_detector:main',
+            'navegacion_vision = g11_prii3_eurobot.navegacion_vision:main',
         ],
     },
 )

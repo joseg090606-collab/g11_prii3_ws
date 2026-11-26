@@ -7,7 +7,7 @@ from std_msgs.msg import String
 def main(args=None):
     rclpy.init(args=args)
     node = rclpy.create_node('overhead_aruco_detector')
-    cap = cv2.VideoCapture(0)  # Cambia a 1 o 2 si tienes webcam integrada
+    cap = cv2.VideoCapture(0)
 
     aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100)
     aruco_params = cv2.aruco.DetectorParameters_create()
@@ -36,7 +36,6 @@ def main(args=None):
                 cx, cy = np.mean(corners[i][0], axis=0)
                 pubs[m_id].publish(String(data=f'id: {m_id}, x: {cx:.1f}, y: {cy:.1f}'))
 
-        # Destruye los topics de los ArUco que ya no están en cámara
         for m_id in list(pubs.keys() - vistos):
             node.destroy_publisher(pubs.pop(m_id))
 
