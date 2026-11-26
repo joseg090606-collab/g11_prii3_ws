@@ -3,50 +3,54 @@ import numpy as np
 import rclpy
 from std_msgs.msg import String
 
-rclpy.init()
-node = rclpy.create_node('overhead_aruco_detector')
-cap = cv2.VideoCapture(0)
 
-detector = cv2.aruco.ArucoDetector(
-    cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100),
-    cv2.aruco.DetectorParameters()
-)
+def main(args=None):
+    rclpy.init(args=args)
+    node = rclpy.create_node('overhead_aruco_detector')
+    cap = cv2.VideoCapture(0)  # Cambia a 1 o 2 si tienes webcam integrada
 
-pubs = {}
-valid_ids = set(range(20, 24)) | set(range(51, 60))
+    aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_4X4_100)
+    aruco_params = cv2.aruco.DetectorParameters_create()
 
-def loop():
-    ret, frame = cap.read()
-    if not ret:
-        return
+    pubs = {}
+    valid_ids = set(range(20, 24)) | set(range(51, 60))
 
-    corners, ids, _ = detector.detectMarkers(frame)
-    vistos = set()
+    def loop():
+        ret, frame = cap.read()
+        if not ret:
+            return
 
-    if ids is not None:
-        for i, m_id in enumerate(ids.flatten()):
-            m_id = int(m_id)
-            if m_id not in valid_ids:
-                continue
+        corners, ids, _ = cv2.aruco.detectMarkers(frame, aruco_dict, parameters=aruco_params)
+        vistos = set()
 
-            vistos.add(m_id)
-            if m_id not in pubs:
-                pubs[m_id] = node.create_publisher(String, f'/overhead_camera/aruco_{m_id}', 10)
+        if ids is not None:
+            for i, m_id in enumerate(ids.flatten()):
+                m_id = int(m_id)
+                if m_id not in valid_ids:
+                    continue
 
-            cx, cy = np.mean(corners[i][0], axis=0)
-            pubs[m_id].publish(String(data=f'id: {m_id}, x: {cx:.1f}, y: {cy:.1f}'))
+                vistos.add(m_id)
+                if m_id not in pubs:
+                    pubs[m_id] = node.create_publisher(String, f'/overhead_camera/aruco_{m_id}', 10)
 
-    # Borra los topics de los ArUco que ya no están en cámara
-    for m_id in list(pubs.keys() - vistos):
-        node.destroy_publisher(pubs.pop(m_id))
+                cx, cy = np.mean(corners[i][0], axis=0)
+                pubs[m_id].publish(String(data=f'id: {m_id}, x: {cx:.1f}, y: {cy:.1f}'))
 
-node.create_timer(0.05, loop)
+        # Destruye los topics de los ArUco que ya no están en cámara
+        for m_id in list(pubs.keys() - vistos):
+            node.destroy_publisher(pubs.pop(m_id))
 
-try:
-    rclpy.spin(node)
-except KeyboardInterrupt:
-    pass
-finally:
-    cap.release()
-    node.destroy_node()
-    rclpy.shutdown()
+    node.create_timer(0.05, loop)
+
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        cap.release()
+        node.destroy_node()
+        rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
